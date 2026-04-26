@@ -3,8 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description" content="Shenzhen Xiker Innovation Technology Co., Ltd. - Premium 3C electronic products including mice, keyboards, and headphones" />
+    
+    <!-- WeChat compatibility -->
+    <meta name="format-detection" content="telephone=yes" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- Open Graph for social sharing -->
+    <meta property="og:title" content="Xiker Technology - Premium 3C Products" />
+    <meta property="og:description" content="Shenzhen Xiker Innovation Technology Co., Ltd. specializes in designing and manufacturing premium electronic 3C products." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://xiker-tech.com" />
+    
+    <title>Xiker Technology - Premium 3C Products</title>
+    
+    <!-- WeChat browser detection and fallback -->
+    <script>
+      (function() {
+        var ua = navigator.userAgent.toLowerCase();
+        var isWeChat = ua.indexOf('micromessenger') !== -1;
+        if (isWeChat) {
+          document.addEventListener('DOMContentLoaded', function() {
+            var tip = document.createElement('div');
+            tip.id = 'wechat-tip';
+            tip.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;color:white;font-size:16px;padding:20px;text-align:center;';
+            tip.innerHTML = '<p style="margin-bottom:20px;">微信内置浏览器可能无法正常加载此网站</p><p style="margin-bottom:20px;">请点击右上角 <span style="font-size:20px;">⋮</span> 选择<br/>"在浏览器中打开"</p><button onclick="this.parentNode.style.display=\'none\'" style="padding:10px 30px;background:#FF8C00;color:white;border:none;border-radius:5px;font-size:16px;">我知道了</button>';
+            document.body.appendChild(tip);
+          });
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
