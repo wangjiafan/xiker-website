@@ -1,37 +1,170 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="description" content="Shenzhen Xiker Innovation Technology Co., Ltd. - Premium 3C electronic products including mice, keyboards, and headphones" />
+    <meta name="description" content="深圳市烯氪创新科技有限公司 - 专注高端3C电子产品：鼠标、键盘、耳机" />
     
-    <!-- WeChat compatibility -->
+    <!-- DNS 预解析 & 预连接（优化国内访问速度） -->
+    <link rel="dns-prefetch" href="//xiker-tech.com" />
+    <link rel="dns-prefetch" href="//img.xiker-tech.com" />
+    <link rel="preconnect" href="https://xiker-tech.com" crossorigin />
+    
+    <!-- 微信兼容 -->
     <meta name="format-detection" content="telephone=yes" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     
-    <!-- Open Graph for social sharing -->
-    <meta property="og:title" content="Xiker Technology - Premium 3C Products" />
-    <meta property="og:description" content="Shenzhen Xiker Innovation Technology Co., Ltd. specializes in designing and manufacturing premium electronic 3C products." />
+    <!-- Open Graph 社交分享 -->
+    <meta property="og:title" content="Xiker Technology - 高端3C电子产品" />
+    <meta property="og:description" content="深圳市烯氪创新科技有限公司，专注高端3C电子产品：鼠标、键盘、耳机" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://xiker-tech.com" />
     
-    <title>Xiker Technology - Premium 3C Products</title>
+    <title>Xiker Technology - 高端3C电子产品</title>
     
-    <!-- WeChat browser detection and fallback -->
+    <!-- 骨架屏 CSS（微信白屏优化） -->
+    <style>
+      .skeleton-wrapper {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: #0a0a0a;
+        z-index: 99998;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+      }
+      .skeleton-nav {
+        height: 72px;
+        background: #1a1a1a;
+        display: flex;
+        align-items: center;
+        padding: 0 24px;
+        justify-content: space-between;
+      }
+      .skeleton-logo {
+        width: 120px;
+        height: 32px;
+        background: linear-gradient(90deg, #222 25%, #333 50%, #222 75%);
+        background-size: 200% 100%;
+        animation: shimmer 1.5s infinite;
+        border-radius: 4px;
+      }
+      .skeleton-menu {
+        display: flex;
+        gap: 16px;
+      }
+      .skeleton-menu-item {
+        width: 48px;
+        height: 16px;
+        background: linear-gradient(90deg, #222 25%, #333 50%, #222 75%);
+        background-size: 200% 100%;
+        animation: shimmer 1.5s infinite;
+        border-radius: 4px;
+      }
+      .skeleton-hero {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        padding: 0 24px;
+      }
+      .skeleton-title {
+        width: 280px;
+        height: 36px;
+        background: linear-gradient(90deg, #222 25%, #333 50%, #222 75%);
+        background-size: 200% 100%;
+        animation: shimmer 1.5s infinite;
+        border-radius: 4px;
+      }
+      .skeleton-subtitle {
+        width: 200px;
+        height: 20px;
+        background: linear-gradient(90deg, #222 25%, #333 50%, #222 75%);
+        background-size: 200% 100%;
+        animation: shimmer 1.5s infinite;
+        border-radius: 4px;
+      }
+      .skeleton-btn {
+        width: 160px;
+        height: 44px;
+        background: linear-gradient(90deg, #FF8C00 25%, #FFA500 50%, #FF8C00 75%);
+        background-size: 200% 100%;
+        animation: shimmer 1.5s infinite;
+        border-radius: 8px;
+      }
+      @keyframes shimmer {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+      }
+      .skeleton-hidden { display: none !important; }
+    </style>
+    
+    <!-- 微信浏览器检测 & 提示 -->
     <script>
       (function() {
         var ua = navigator.userAgent.toLowerCase();
         var isWeChat = ua.indexOf('micromessenger') !== -1;
+        
+        // 显示骨架屏
+        document.write('<div id="skeleton" class="skeleton-wrapper">' +
+          '<div class="skeleton-nav">' +
+          '  <div class="skeleton-logo"></div>' +
+          '  <div class="skeleton-menu">' +
+          '    <div class="skeleton-menu-item"></div>' +
+          '    <div class="skeleton-menu-item"></div>' +
+          '    <div class="skeleton-menu-item"></div>' +
+          '  </div>' +
+          '</div>' +
+          '<div class="skeleton-hero">' +
+          '  <div class="skeleton-title"></div>' +
+          '  <div class="skeleton-subtitle"></div>' +
+          '  <div class="skeleton-btn"></div>' +
+          '</div>' +
+        '</div>');
+        
+        // 微信浏览器提示
         if (isWeChat) {
-          document.addEventListener('DOMContentLoaded', function() {
+          window.addEventListener('DOMContentLoaded', function() {
             var tip = document.createElement('div');
             tip.id = 'wechat-tip';
-            tip.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;color:white;font-size:16px;padding:20px;text-align:center;';
-            tip.innerHTML = '<p style="margin-bottom:20px;">微信内置浏览器可能无法正常加载此网站</p><p style="margin-bottom:20px;">请点击右上角 <span style="font-size:20px;">⋮</span> 选择<br/>"在浏览器中打开"</p><button onclick="this.parentNode.style.display=\'none\'" style="padding:10px 30px;background:#FF8C00;color:white;border:none;border-radius:5px;font-size:16px;">我知道了</button>';
+            tip.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;';
+            tip.innerHTML = '<div style="background:white;border-radius:16px;max-width:320px;width:100%;padding:32px 24px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.3);">' +
+              '<div style="width:48px;height:48px;background:#FFF3E0;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:24px;">!</div>' +
+              '<h3 style="font-size:18px;font-weight:600;color:#1a1a1a;margin-bottom:12px;">温馨提示</h3>' +
+              '<p style="font-size:14px;color:#666;line-height:1.6;margin-bottom:20px;">当前在微信内置浏览器中打开，部分功能可能受限，建议选择在浏览器中打开以获得最佳体验</p>' +
+              '<div style="display:flex;align-items:center;gap:8px;background:#f5f5f5;padding:12px 16px;border-radius:8px;margin-bottom:24px;font-size:14px;color:#333;">' +
+              '  <span style="font-size:20px;">⋮</span>' +
+              '  <span>点击右上角，选择「在浏览器中打开」</span>' +
+              '</div>' +
+              '<button id="wechat-tip-close" style="width:100%;padding:12px;background:#FF8C00;color:white;border:none;border-radius:8px;font-size:16px;font-weight:500;cursor:pointer;">我知道了</button>' +
+              '</div>';
             document.body.appendChild(tip);
+            
+            document.getElementById('wechat-tip-close').addEventListener('click', function() {
+              document.getElementById('wechat-tip').style.display = 'none';
+            });
+            
+            tip.addEventListener('click', function(e) {
+              if (e.target === tip) {
+                tip.style.display = 'none';
+              }
+            });
           });
         }
+        
+        // React 加载完成后隐藏骨架屏
+        window.addEventListener('load', function() {
+          setTimeout(function() {
+            var skeleton = document.getElementById('skeleton');
+            if (skeleton) {
+              skeleton.classList.add('skeleton-hidden');
+              setTimeout(function() { skeleton.remove(); }, 300);
+            }
+          }, 500);
+        });
       })();
     </script>
   </head>
