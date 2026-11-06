@@ -1,18 +1,12 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useLanguage } from "../contexts/LanguageContext";
-import { products } from "../data/products";
+import { products, categories } from "../data/products";
 import ProductCard from "../components/ProductCard";
-
-const categories = [
-  { key: "all", labelKey: "products.filter.all" },
-  { key: "mouse", labelKey: "products.filter.mice" },
-  { key: "keyboard", labelKey: "products.filter.keyboards" },
-  { key: "headphone", labelKey: "products.filter.headphones" },
-];
 
 const Products = () => {
   const [activeCategory, setActiveCategory] = useState("all");
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const filteredProducts =
     activeCategory === "all"
@@ -35,17 +29,27 @@ const Products = () => {
       <section className="py-8 bg-black border-b border-gray-800">
         <div className="container-custom">
           <div className="flex flex-wrap justify-center gap-4">
+            <button
+              onClick={() => setActiveCategory("all")}
+              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                activeCategory === "all"
+                  ? "bg-primary text-white shadow-lg"
+                  : "bg-gray-900 text-gray-300 hover:bg-gray-800"
+              }`}
+            >
+              {t("products.filter.all")}
+            </button>
             {categories.map((category) => (
               <button
-                key={category.key}
-                onClick={() => setActiveCategory(category.key)}
+                key={category.id}
+                onClick={() => setActiveCategory(category.id)}
                 className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
-                  activeCategory === category.key
+                  activeCategory === category.id
                     ? "bg-primary text-white shadow-lg"
                     : "bg-gray-900 text-gray-300 hover:bg-gray-800"
                 }`}
               >
-                {t(category.labelKey)}
+                {category.label[language]}
               </button>
             ))}
           </div>
@@ -57,10 +61,10 @@ const Products = () => {
         <div className="container-custom">
           {filteredProducts.length === 0 ? (
             <div className="text-center py-16">
-              <p className="text-2xl text-gray-400">No products found in this category.</p>
+              <p className="text-2xl text-gray-400">{t("products.empty")}</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {filteredProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
@@ -76,12 +80,12 @@ const Products = () => {
           <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-300">
             {t("products.cta.subtitle")}
           </p>
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="btn-primary text-lg bg-primary hover:bg-primary-dark"
           >
             {t("products.cta.button")}
-          </a>
+          </Link>
         </div>
       </section>
     </div>

@@ -17,7 +17,7 @@ const Footer = () => {
                 alt="Xiker Logo" 
                 className="w-8 h-8 object-contain"
               />
-              <span className="font-bold text-white">Xiker Innovation</span>
+              <span className="font-bold text-white">{t("brand.name")}</span>
             </div>
             <p className="text-gray-400 mb-4">
               {t("footer.description")}
@@ -58,11 +58,7 @@ const Footer = () => {
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="text-primary mt-1" size={18} />
-                <div className="text-gray-400">
-                  <p>Lotus Plaza, Block B, 17th Floor</p>
-                  <p>Nantou Street, Nanshan District</p>
-                  <p>Shenzhen, China</p>
-                </div>
+                <p className="text-gray-400">{t("contact.info.addressLines")}</p>
               </div>
             </div>
           </div>
@@ -70,7 +66,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
-          <p>&copy; {new Date().getFullYear()} Shenzhen Xiker Innovation Technology Co., Ltd. {t("footer.rights")}</p>
+          <p>&copy; {new Date().getFullYear()} {t("brand.company")}. {t("footer.rights")}</p>
         </div>
       </div>
     </footer>

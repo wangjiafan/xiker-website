@@ -64,10 +64,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-white mb-3">{t("contact.info.address")}</h3>
-                    <p className="text-gray-400 mb-1">Shenzhen Xiker Innovation Technology Co., Ltd.</p>
-                    <p className="text-gray-400 mb-1">Lotus Plaza, Block B, 17th Floor</p>
-                    <p className="text-gray-400 mb-1">Nantou Street, Nanshan District</p>
-                    <p className="text-gray-400">Shenzhen, China</p>
+                    <p className="text-gray-400 mb-1">{t("brand.company")}</p>
+                    <p className="text-gray-400">{t("contact.info.addressLines")}</p>
                   </div>
                 </div>
               </div>
@@ -84,8 +82,8 @@ const Contact = () => {
             <div className="bg-gray-800 h-96 flex items-center justify-center">
               <div className="text-center">
                 <MapPin className="text-gray-600 mx-auto mb-4" size={64} />
-                <p className="text-gray-400 text-lg">Shenzhen, Nanshan District</p>
-                <p className="text-gray-500 text-sm mt-2">Lotus Plaza, Block B, 17th Floor</p>
+                <p className="text-gray-400 text-lg">{t("brand.company")}</p>
+                <p className="text-gray-500 text-sm mt-2">{t("contact.info.addressLines")}</p>
               </div>
             </div>
           </div>

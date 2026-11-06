@@ -3,8 +3,8 @@ import { ArrowRight, Lightbulb, ShieldCheck, Headphones, Globe } from "lucide-re
 import { useLanguage } from "../contexts/LanguageContext";
 
 const Home = () => {
-  const { t } = useLanguage();
-  
+  const { t, language } = useLanguage();
+
   const features = [
     {
       icon: <Lightbulb size={32} className="text-primary" />,
@@ -30,19 +30,28 @@ const Home = () => {
 
   const productCategories = [
     {
+      id: "mouse",
       name: t("products.filter.mice"),
       description: t("home.products.subtitle"),
       image: "/images/products/mouse-01.png"
     },
     {
+      id: "keyboard",
       name: t("products.filter.keyboards"),
       description: t("home.products.subtitle"),
       image: "/images/products/keyboard-01.jpg"
     },
     {
+      id: "headphone",
       name: t("products.filter.headphones"),
       description: t("home.products.subtitle"),
       image: "/images/products/GP021.jpg"
+    },
+    {
+      id: "microphone",
+      name: t("products.filter.microphones"),
+      description: t("home.products.subtitle"),
+      image: "/images/products/microphone/MK-06-01.webp"
     }
   ];
 
@@ -98,17 +107,23 @@ const Home = () => {
           <p className="text-lg text-gray-400 text-center mb-12 max-w-2xl mx-auto">
             {t("home.products.subtitle")}
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {productCategories.map((category, index) => (
               <div
                 key={index}
                 className="bg-black rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-gray-800"
               >
-                <div className="w-full h-48 flex items-center justify-center p-6 bg-gradient-to-br from-gray-900 to-gray-800 rounded-t-xl">
+                <div className="w-full h-48 flex items-center justify-center p-6 bg-gradient-to-br from-gray-900 to-gray-800 rounded-t-xl overflow-hidden">
                   <img
                     src={category.image}
                     alt={category.name}
                     className="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-300 drop-shadow-lg"
+                    style={
+                      category.id === "microphone"
+                        ? { background: "#fff", borderRadius: "8px", padding: "6px" }
+                        : undefined
+                    }
+                    loading="lazy"
                   />
                 </div>
                 <div className="p-6">

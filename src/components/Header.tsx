@@ -43,7 +43,7 @@ const Header = () => {
               isScrolled ? "text-white" : "text-white"
             }`}
           >
-            Xiker Innovation
+            {t("brand.name")}
           </span>
         </Link>
 
